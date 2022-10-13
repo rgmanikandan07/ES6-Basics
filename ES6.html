@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+</head>
+<body>
+    <script>
+        // Promise //
+        const person = true;
+        const p = new Promise((resolve,reject)=>{
+            if(person){
+                resolve("success");
+            }
+            else{
+                reject("failed")
+            }
+        })
+        p.then((message)=>{
+            console.log("Then"+message);
+        })
+        .catch((message)=>{
+            console.log("Catch"+message);
+        })
+
+        // Promise all //
+
+        var p1 = new Promise((resolve,reject)=>{
+            resolve(10);
+        });
+        var p2 = new Promise((resolve,reject)=>{
+            resolve(20);
+        });
+        var p3 = new Promise((resolve,reject)=>{
+            resolve(30);
+        });
+        var p4 = new Promise((resolve,reject)=>{
+            rejected(null);
+        });
+
+        Promise.all([p1,p2,p3,p4]).then((values)=>{
+            const total = values.reduce((a,b)=>{
+                return a+b;
+            });
+            console.log(`Total = ${total}`);
+        })
+        .catch((value)=>{
+            console.log(`one of the promise gets Rejected(value)=${value}`);
+        });
+
+        // spread //
+            const array = [1, 2, 3];
+               const obj = [...array ];
+                console.log(obj);
+
+        // rest //
+          
+        var x = ['dhoni','virat','dk','jaddu'];
+        var y = ['bravo',...x];
+        var [masn,...rest] = y;
+        console.log(y);
+        console.log(rest);
+           
+
+    </script>
+</body>
+</html>
