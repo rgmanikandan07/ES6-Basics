@@ -1,69 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ES6</title>
 </head>
+
 <body>
     <script>
+
+        // call back //
+        function x(name) {
+            alert(`hello,${name}`);
+        }
+        function input(callback) {
+            const name = prompt("enter name");
+            callback(name);
+        }
+        input(x);
+
         // Promise //
         const person = true;
-        const p = new Promise((resolve,reject)=>{
-            if(person){
+        const p = new Promise((resolve, reject) => {
+            if (person) {
                 resolve("success");
             }
-            else{
+            else {
                 reject("failed")
             }
         })
-        p.then((message)=>{
-            console.log("Then"+message);
+        p.then((message) => {
+            console.log("Then" + message);
         })
-        .catch((message)=>{
-            console.log("Catch"+message);
-        })
+            .catch((message) => {
+                console.log("Catch" + message);
+            })
 
         // Promise all //
 
-        var p1 = new Promise((resolve,reject)=>{
+        var p1 = new Promise((resolve, reject) => {
             resolve(10);
         });
-        var p2 = new Promise((resolve,reject)=>{
+        var p2 = new Promise((resolve, reject) => {
             resolve(20);
         });
-        var p3 = new Promise((resolve,reject)=>{
+        var p3 = new Promise((resolve, reject) => {
             resolve(30);
         });
-        var p4 = new Promise((resolve,reject)=>{
+        var p4 = new Promise((resolve, reject) => {
             rejected(null);
         });
 
-        Promise.all([p1,p2,p3,p4]).then((values)=>{
-            const total = values.reduce((a,b)=>{
-                return a+b;
+        Promise.all([p1, p2, p3, p4]).then((values) => {
+            const total = values.reduce((a, b) => {
+                return a + b;
             });
             console.log(`Total = ${total}`);
         })
-        .catch((value)=>{
-            console.log(`one of the promise gets Rejected(value)=${value}`);
-        });
+            .catch((value) => {
+                console.log(`one of the promise gets Rejected(value)=${value}`);
+            });
 
         // spread //
-            const array = [1, 2, 3];
-               const obj = [...array ];
-                console.log(obj);
+        const array = [1, 2, 3];
+        const obj = [...array];
+        console.log(obj);
 
         // rest //
-          
-        var x = ['dhoni','virat','dk','jaddu'];
-        var y = ['bravo',...x];
-        var [masn,...rest] = y;
+
+        var x = ['dhoni', 'virat', 'dk', 'jaddu'];
+        var y = ['bravo', ...x];
+        var [dk, ...rest] = y;
         console.log(y);
         console.log(rest);
-           
+
+
+        // Arrow function //
+        const materials = [
+            'Hydrogen',
+            'Helium',
+            'Lithium',
+            'Beryllium'
+        ];
+
+        console.log(materials.map(material => material.length));
+
+        // destructing //
+
+        let profile = {
+            name:'dhoni',
+            age:'40',
+            team:'india'
+        }
+        let {name,age,team}=profile;
+            console.log(name);
+            console.log(age);
+            console.log(team);
+
+        // class //
+        
+        class Name {
+            constructor(){
+                this.name="msd"
+                this.age=21
+            }
+            addition(m){
+                this.name+=m
+            }
+            add2(a){
+                this.age+=a;
+            }
+        }
+        let nameClass = new Name();
+        nameClass.addition(" mani")
+        nameClass.add2(10)
+
+        console.log(nameClass)
+
+        let other = new Name()
+           console.log(other);
+
+
+
+           // Template littrature //
+
+           let name1 = "Manikandan";
+           let name2 = "UG";
+           console.log(`i am ${name1} completed ${name2}`);
+
+
+
+
+           // Let //
+
+           let input = 5;
+
+           if(true){
+              input = 10;
+              console.log(input);
+           }
+           console.log(input);
+
+           // var //
+
+           var input = 5;
+           if(true){
+              input = 10;
+              console.log(input);
+           }
+           console.log(input);
+
+           // const //
+
+           const input = 5;
+           if(true){
+              input = 10;
+              console.log(input);
+           }
+           console.log(input);
+
+
+
+
+
 
     </script>
 </body>
+
 </html>
